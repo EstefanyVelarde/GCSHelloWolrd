@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+  <ui:composition template="/WEB-INF/include/template.xhtml">
+    <ui:define name="head">
+        <h:outputStylesheet name="css/style.css"/>
+    </ui:define>
+    
+    <ui:define name="body">
+    <div class="container">
+    
+    <div class="page-header">
+	  <h1>Hola Mundo! <small>de Google Cloud Storage</small></h1>
+	</div>
+	
+	<h:form enctype="multipart/form-data">
+		<div class="container">
+	      	<div class="row">
+	      		<div class="col-lg-7">
+			      	<a href="#{holaMundo.imageUrl}" target="_blank" aria-label="Back to the page">
+			      		<h:graphicImage class="thumbnail" url="#{holaMundo.imageUrl}" width="600" height="600"/>
+		    		</a>
+		    		
+			      	<div class="options"> 
+				       	<h:commandLink class="btn btn-default" action="#{holaMundo.prev}">
+						  <span class="glyphicon glyphicon-menu-left"></span>
+						</h:commandLink>
+						
+				       	<h:commandLink class="btn btn-default" action="#{holaMundo.next}">
+						  <span class="glyphicon glyphicon-menu-right"></span>
+						</h:commandLink>
+			      	</div>
+			      	
+	      		</div>
+	      		<div class="col-lg-4">
+					<div class="panel panel-warning">
+					  	<div class="panel-heading">
+					    	<h3 class="panel-title">Subir archivo</h3>
+					  	</div>
+					  	<div class="panel-body">
+					   		<div class="input-group">
+						      	<h:inputFile value="#{holaMundo.content}" />
+						      	<div class="input-group-btn">
+							    	<h:commandButton class="btn btn-success" action="#{holaMundo.upload}" value ="Subir"/>
+								</div>
+							</div>
+					  	</div>
+					</div>
+					
+					<div class="panel panel-info">
+					  	<div class="panel-heading">
+					    	<h3 class="panel-title">Información</h3>
+					  	</div>
+					  	
+					  	<div class="panel-body">
+							<table class="table">
+							  <tr>
+							    <th>Nombre:</th>
+							    <td><h:outputText value="#{holaMundo.id}"/></td>
+							  </tr>
+							  <tr>
+							    <th>Tipo:</th>
+							    <td><h:outputText value="#{holaMundo.type}"/></td>
+							  </tr>
+							  <tr>
+							    <th>Url:</th>
+							    <td><h:outputText value="#{holaMundo.imageUrl}"/></td>
+							  </tr>
+							</table>
+							
+							<h:commandButton class="btn btn-danger pull-right" action="#{holaMundo.delete}" value ="Eliminar"/>
+					  	</div>
+					</div>
+				</div>
+			</div>
+	      </div>
+	</h:form>
+    </div>
+    </ui:define>
+  </ui:composition> 
+</html>
